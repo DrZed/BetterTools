@@ -34,11 +34,6 @@ public class EventHandler {
     public void LivingUpdate(LivingEvent.LivingUpdateEvent event){
         if (VE || DevMode && event.entity instanceof EntityPlayer){
             EntityPlayer player = (EntityPlayer) event.entity;
-
-            if (player.getCurrentArmor(0) instanceof VoidBoots){VBoot = player.getCurrentArmor(0);}
-            if (player.getCurrentArmor(1) instanceof VoidLeggings){VLeg = player.getCurrentArmor(1);}
-            if (player.getCurrentArmor(2) instanceof VoidChestplate){VChest = player.getCurrentArmor(2);}
-            if (player.getCurrentArmor(3) instanceof VoidHelm){VHelm = player.getCurrentArmor(3);}
             
             for(int k = 0; k < 4; k++){
                 ItemStack Armor = player.getCurrentArmor(k);

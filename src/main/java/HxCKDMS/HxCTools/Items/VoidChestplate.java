@@ -1,7 +1,9 @@
 package HxCKDMS.HxCTools.Items;
 
-/**
- * Created by KerudonSurreiya on 11/6/2014.
- */
-public class VoidChestplate {
+import net.minecraft.item.ItemArmor;
+
+public class VoidChestplate extends ItemArmor {
+    public VoidChestplate(ArmorMaterial Material, int a, int b) {
+        super(Material, a, b);
+    }
 }
