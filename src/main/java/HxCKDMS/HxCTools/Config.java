@@ -4,7 +4,8 @@ import net.minecraftforge.common.config.Configuration;
 
 public class Config
 {
-    //Sword
+    public static int VoidRepairRate = 20;
+
     public static boolean SapphireEnable;
     public static boolean AventurineEnable;
     public static boolean RubyEnable;
