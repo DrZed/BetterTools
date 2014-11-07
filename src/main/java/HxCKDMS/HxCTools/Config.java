@@ -6,6 +6,8 @@ public class Config
 {
     public static int VoidRepairRate = 20;
 
+    public static int TextureSize;
+
     public static boolean SapphireEnable;
     public static boolean AventurineEnable;
     public static boolean RubyEnable;
@@ -22,6 +24,8 @@ public class Config
     public Config(Configuration config)
     {
         config.load();
+
+        TextureSize = config.get("Features", "Texture Size 16, 32, 64 only", 16).getInt();
 
         SapphireEnable = config.get("Features", "Enable Sapphire Tools and Weapons", true).getBoolean();
         AventurineEnable = config.get("Features", "Enable Aventurine Tools and Weapons", true).getBoolean();

@@ -22,7 +22,7 @@ group= "HxCKDMS.HxCTools" // http://maven.apache.org/guides/mini/guide-naming-co
 archivesBaseName = "HxCTools"
 
 minecraft {
-    version = "1.7.10-10.13.1.1219"
+    version = "1.7.10-10.13.2.1230"
     runDir = "eclipse"
 }
 

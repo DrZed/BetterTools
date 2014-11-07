@@ -2,66 +2,71 @@ package HxCKDMS.HxCTools.Handling;
 
 import HxCKDMS.HxCTools.Config;
 import HxCKDMS.HxCTools.Items.*;
-import net.minecraft.item.Item;
+import net.minecraft.item.*;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class ContentRegistry {
-			
-	//Tools
-	public static Item AventurineSword;
-	public static Item AventurineAxe;
-	public static Item AventurinePickaxe;
-    public static Item AventurineSpade;
-    public static Item AventurineHoe;
 
-    public static Item SapphireSword;
-    public static Item SapphirePickaxe;
-    public static Item SapphireAxe;
-    public static Item SapphireSpade;
-    public static Item SapphireHoe;
+	public static ItemSword AventurineSword;
+	public static ItemAxe AventurineAxe;
+	public static ItemPickaxe AventurinePickaxe;
+    public static ItemSpade AventurineSpade;
+    public static ItemHoe AventurineHoe;
 
-    public static Item RubySword;
-    public static Item RubyAxe;
-    public static Item RubyPickaxe;
-    public static Item RubyHoe;
-    public static Item RubySpade;
+    public static ItemSword SapphireSword;
+    public static ItemAxe SapphireAxe;
+    public static ItemPickaxe SapphirePickaxe;
+    public static ItemSpade SapphireSpade;
+    public static ItemHoe SapphireHoe;
 
-    public static Item ObsidianSword;
-    public static Item ObsidianAxe;
-    public static Item ObsidianPickaxe;
-    public static Item ObsidianSpade;
-    public static Item ObsidianHoe;
+    public static ItemSword RubySword;
+    public static ItemAxe RubyAxe;
+    public static ItemPickaxe RubyPickaxe;
+    public static ItemSpade RubySpade;
+    public static ItemHoe RubyHoe;
 
-    public static Item DPlatedSword;
-    public static Item DPlatedAxe;
-    public static Item DPlatedPickaxe;
-    public static Item DPlatedSpade;
-    public static Item DPlatedHoe;
+    public static ItemSword ObsidianSword;
+    public static ItemAxe ObsidianAxe;
+    public static ItemPickaxe ObsidianPickaxe;
+    public static ItemSpade ObsidianSpade;
+    public static ItemHoe ObsidianHoe;
 
-    public static Item BronzeSword;
-    public static Item BronzeAxe;
-    public static Item BronzePickaxe;
-    public static Item BronzeSpade;
-    public static Item BronzeHoe;
+    public static ItemSword DPlatedSword;
+    public static ItemAxe DPlatedAxe;
+    public static ItemPickaxe DPlatedPickaxe;
+    public static ItemSpade DPlatedSpade;
+    public static ItemHoe DPlatedHoe;
 
-    public static Item SteelSword;
-    public static Item SteelAxe;
-    public static Item SteelPickaxe;
-    public static Item SteelSpade;
-    public static Item SteelHoe;
+    public static ItemSword BronzeSword;
+    public static ItemAxe BronzeAxe;
+    public static ItemPickaxe BronzePickaxe;
+    public static ItemSpade BronzeSpade;
+    public static ItemHoe BronzeHoe;
 
-    public static Item TitaniumSword;
-    public static Item TitaniumAxe;
-	public static Item TitaniumPickaxe;
-    public static Item TitaniumSpade;
-	public static Item TitaniumHoe;
+    public static ItemSword SteelSword;
+    public static ItemAxe SteelAxe;
+    public static ItemPickaxe SteelPickaxe;
+    public static ItemSpade SteelSpade;
+    public static ItemHoe SteelHoe;
 
-    public static Item VoidSword;
-    public static Item VoidAxe;
-    public static Item VoidPickaxe;
-    public static Item VoidSpade;
-    public static Item VoidHoe;
-    public static boolean VoidIsReady = false;
+    public static ItemSword TitaniumSword;
+    public static ItemAxe TitaniumAxe;
+	public static ItemPickaxe TitaniumPickaxe;
+    public static ItemSpade TitaniumSpade;
+	public static ItemHoe TitaniumHoe;
+
+    public static ItemSword VoidSword;
+    public static ItemAxe VoidAxe;
+    public static ItemPickaxe VoidPickaxe;
+    public static ItemSpade VoidSpade;
+    public static ItemHoe VoidHoe;
+
+    public static ItemArmor VoidHelm;
+    public static ItemArmor VoidChestplate;
+    public static ItemArmor VoidLeggings;
+    public static ItemArmor VoidBoots;
+
+    public static boolean VoidIsReady = true;
 
     public static Item Hammer;
 		
@@ -154,12 +159,18 @@ public class ContentRegistry {
         if (Config.VoidEnable && VoidIsReady)
         {
             Item.ToolMaterial EnumToolMaterialVoid = EnumHelper.addToolMaterial("Void", 10, 100, 14.0F, 20, 30);
+            ItemArmor.ArmorMaterial EnumArmorMaterialVoid = EnumHelper.addArmorMaterial("Void", 500, new int[] {11, 16, 15, 13}, 30);
 
             VoidAxe = new VoidAxe(EnumToolMaterialVoid);
             VoidHoe = new VoidHoe(EnumToolMaterialVoid);
             VoidSword = new VoidSword(EnumToolMaterialVoid);
             VoidSpade = new VoidSpade(EnumToolMaterialVoid);
             VoidPickaxe = new VoidPickaxe(EnumToolMaterialVoid);
+
+            VoidHelm = new VoidHelm(EnumArmorMaterialVoid, 20, 0);
+            VoidChestplate = new VoidChestplate(EnumArmorMaterialVoid, 20, 1);
+            VoidLeggings = new VoidLeggings(EnumArmorMaterialVoid, 20, 2);
+            VoidBoots = new VoidBoots(EnumArmorMaterialVoid, 20, 3);
         }
         if(Config.HammerEnable)
         {

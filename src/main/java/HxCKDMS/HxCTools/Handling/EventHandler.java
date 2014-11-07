@@ -1,15 +1,25 @@
 package HxCKDMS.HxCTools.Handling;
 
 import HxCKDMS.HxCTools.Config;
-import HxCKDMS.HxCTools.Items.VoidBoots;
-import HxCKDMS.HxCTools.Items.VoidChestplate;
-import HxCKDMS.HxCTools.Items.VoidHelm;
-import HxCKDMS.HxCTools.Items.VoidLeggings;
+import HxCKDMS.HxCTools.Items.VoidPickaxe;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
+import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
+import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.ArrayList;
 
 public class EventHandler {
     public int VoidRepair = Config.VoidRepairRate;
@@ -30,11 +40,12 @@ public class EventHandler {
     ItemStack VS = null;
     ItemStack VB = null;
 
+    String PickMode = VoidPickaxe.PickMode;
+
     @SubscribeEvent
-    public void LivingUpdate(LivingEvent.LivingUpdateEvent event){
+    public void LivingUpdateEvent(LivingEvent.LivingUpdateEvent event){
         if (VE || DevMode && event.entity instanceof EntityPlayer){
             EntityPlayer player = (EntityPlayer) event.entity;
-            
             for(int k = 0; k < 4; k++){
                 ItemStack Armor = player.getCurrentArmor(k);
                 if (Armor == VChest || Armor == VBoot || Armor == VLeg || Armor == VHelm){VoidArmor = Armor;}
@@ -53,6 +64,108 @@ public class EventHandler {
                     {
                         VoidItem.setItemDamage(0);
                         VoidRepair = Config.VoidRepairRate;
+                    }
+                }
+            }
+        }
+    }
+    @SubscribeEvent
+    public void LivingAttackEvent(LivingAttackEvent event){
+
+    }
+    @SubscribeEvent
+    public void LivingDeathEvent(LivingDeathEvent event){
+
+    }
+    @SubscribeEvent
+    public void LivingHurtEvent(LivingHurtEvent event){
+
+    }
+    @SubscribeEvent
+    public void LivingJumpEvent(LivingEvent.LivingJumpEvent event){
+
+    }
+    @SubscribeEvent
+    public void PlayerTickEvent(TickEvent.PlayerTickEvent event){
+
+    }
+    @SubscribeEvent
+    public void LivingEvent(LivingEvent event){
+
+    }
+    @SubscribeEvent
+    public void PlayerEvent(PlayerEvent event){
+
+    }
+    @SubscribeEvent
+    public void UserItemEvent(PlayerUseItemEvent event){
+        Item item = event.item.getItem();
+        if (item.toString().equalsIgnoreCase("voidaxe")){
+            EntityPlayer player = event.entityPlayer;
+            int j = (int)player.posX;
+            int d = (int)player.posY;
+            int k = (int)player.posZ;
+            int xs = j-10;
+            int ys = d-5;
+            int zs = k-10;
+            int xm = j+10;
+            int ym = d+50;
+            int zm = k+10;
+            for(int x = xs; x < xm; x++)
+            {
+                for(int z = zs; z < zm; z++)
+                {
+                    World world = player.worldObj;
+                    for(int y = ys; y < ym; y++)
+                    {
+                        Block block = world.getBlock(x, y, z);
+                        //ForTesting Not Sure if this will work v is a wierd system
+                        ArrayList OreDictWood = OreDictionary.getOres("logWood");
+                        if (block != Blocks.air && player.worldObj.canMineBlock(player, x, y, z) && OreDictWood.contains(block.toString()))
+                        {
+                            ItemStack NewB = new ItemStack(player.worldObj.getBlock(x, y, z));
+                            world.spawnEntityInWorld(new EntityItem(world, player.posX, player.posY, player.posZ, NewB));
+                            world.setBlockToAir(x, y, z);
+                        }
+                    }
+                }
+            }
+        }if (item.toString().equalsIgnoreCase("voidpickaxe")){
+            EntityPlayer player = event.entityPlayer;
+            int j = (int)player.posX;
+            int d = (int)player.posY;
+            int k = (int)player.posZ;
+            int xs = j-10;
+            int ys = d-10;
+            int zs = k-10;
+            int xm = j+10;
+            int ym = d+10;
+            int zm = k+10;
+            for(int x = xs; x < xm; x++)
+            {
+                for(int z = zs; z < zm; z++)
+                {
+                    World world = player.worldObj;
+                    for(int y = ys; y < ym; y++)
+                    {
+                        Block block = world.getBlock(x, y, z);
+                        if (block == Blocks.stone || block == Blocks.dirt || block == Blocks.gravel && PickMode.equalsIgnoreCase("DeleteMode"))
+                        {
+                            world.setBlockToAir(x, y, z);
+                        }else if (block == Blocks.stone || block == Blocks.dirt || block == Blocks.gravel && PickMode.equalsIgnoreCase("DropMode"))
+                        {
+                            ItemStack NewB = new ItemStack(player.worldObj.getBlock(x, y, z));
+                            world.spawnEntityInWorld(new EntityItem(world, player.posX, player.posY, player.posZ, NewB));
+                            world.setBlockToAir(x, y, z);
+                        }
+                        ArrayList test = OreDictionary.getOres(block.toString());
+                        boolean isOre = test.toString().startsWith("ore");
+                        if (block != Blocks.air && player.worldObj.canMineBlock(player, x, y, z) && isOre)
+                        {
+                            ItemStack NewB = new ItemStack(player.worldObj.getBlock(x, y, z));
+                            world.spawnEntityInWorld(new EntityItem(world, player.posX, player.posY, player.posZ, NewB));
+                            world.setBlockToAir(x, y, z);
+                        }
                     }
                 }
             }
