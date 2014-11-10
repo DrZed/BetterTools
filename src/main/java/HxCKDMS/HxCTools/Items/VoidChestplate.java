@@ -15,13 +15,15 @@ import java.util.UUID;
 
 public class VoidChestplate extends ItemArmor {
     public UUID HealthUUID = UUID.fromString("d7aa109c-cbba-4587-b684-9b70c396bbb0");
-    public VoidChestplate(ArmorMaterial Material, int a, int b) {
+    public VoidChestplate(ArmorMaterial Material, int a, int b)
+    {
         super(Material, a, b);
         setTextureName(TextureHandler.VoidChestplate);
         setNoRepair();
     }
     @Override
-    public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
+    public void onArmorTick(World world, EntityPlayer player, ItemStack armor)
+    {
         player.heal(5);
         player.inventory.armorItemInSlot(2).setItemDamage(0);
         player.xpCooldown = 0;

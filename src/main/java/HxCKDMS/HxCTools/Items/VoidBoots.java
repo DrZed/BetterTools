@@ -11,15 +11,18 @@ import net.minecraft.world.World;
 
 import java.util.UUID;
 
-public class VoidBoots extends ItemArmor {
+public class VoidBoots extends ItemArmor
+{
     public UUID KBRUUID = UUID.fromString("0b472ea5-7f57-49d1-8015-93dbc7114ceb");
-    public VoidBoots(ArmorMaterial Material, int a, int b) {
+    public VoidBoots(ArmorMaterial Material, int a, int b)
+    {
         super(Material, a, b);
         setTextureName(TextureHandler.VoidBoots);
         setNoRepair();
     }
     @Override
-    public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
+    public void onArmorTick(World world, EntityPlayer player, ItemStack armor)
+    {
         player.heal(5);
         player.inventory.armorItemInSlot(2).setItemDamage(0);
         player.capabilities.allowFlying = true;

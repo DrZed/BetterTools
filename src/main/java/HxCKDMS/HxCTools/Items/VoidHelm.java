@@ -13,13 +13,15 @@ import java.util.UUID;
 
 public class VoidHelm extends ItemArmor {
     public UUID FollowUUID = UUID.fromString("e3ba58fd-5842-4dcf-95ab-afd11e8d72a4");
-    public VoidHelm(ArmorMaterial Material, int a, int b) {
+    public VoidHelm(ArmorMaterial Material, int a, int b)
+    {
         super(Material, a, b);
         setTextureName(TextureHandler.VoidHelm);
         setNoRepair();
     }
     @Override
-    public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
+    public void onArmorTick(World world, EntityPlayer player, ItemStack armor)
+    {
         player.heal(5);
         player.inventory.armorItemInSlot(2).setItemDamage(0);
         player.setAir(10);

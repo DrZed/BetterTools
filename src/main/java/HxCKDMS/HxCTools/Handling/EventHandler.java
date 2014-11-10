@@ -75,28 +75,31 @@ public class EventHandler{
         }
     }
     @SubscribeEvent
-    public void LivingAttackEvent(LivingAttackEvent event){
-
+    public void LivingAttackEvent(LivingAttackEvent event)
+    {
+        if(event.entityLiving.getLastAttacker() instanceof EntityPlayer){
+            EntityPlayer player = (EntityPlayer) event.entityLiving.getLastAttacker();
+            EntityLiving victim = (EntityLiving) event.entityLiving;
+            if(player.getHeldItem().toString().equalsIgnoreCase("VoidSword"))
+            {
+                victim.attackEntityFrom(new DamageSource("YourMother"), 280F);
+                victim.onDeath(new DamageSource("YourMother"));
+            }
+        }
     }
     @SubscribeEvent
-    public void LivingDeathEvent(LivingDeathEvent event){
-
-    }
-    @SubscribeEvent
-    public void LivingHurtEvent(LivingHurtEvent event){
-
-    }
-    @SubscribeEvent
-    public void LivingJumpEvent(LivingEvent.LivingJumpEvent event){
-
-    }
-    @SubscribeEvent
-    public void PlayerTickEvent(TickEvent.PlayerTickEvent event){
-
-    }
-    @SubscribeEvent
-    public void LivingEvent(LivingEvent event){
-
+    public void LivingJumpEvent(LivingEvent.LivingJumpEvent event)
+    {
+        if(event.entityLiving instanceof EntityPlayer)
+        {
+            EntityPlayer player = (EntityPlayer) event.entityLiving;
+            ItemStack pants = player.inventory.armorItemInSlot(2);
+            if (pants.toString().equalsIgnoreCase("voidleggings"))
+            {
+                double JumpBuff = player.motionY + 0.4;
+                player.motionY += JumpBuff;
+            }
+        }
     }
     @SubscribeEvent
     public void PlayerEvent(PlayerEvent event){

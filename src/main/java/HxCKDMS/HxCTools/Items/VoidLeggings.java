@@ -14,7 +14,8 @@ import java.util.jar.Attributes;
 
 public class VoidLeggings extends ItemArmor {
     public UUID SpeedUUID = UUID.fromString("13a8d246-c5d8-4af4-9b04-5f481fc93254");
-    public VoidLeggings(ArmorMaterial Material, int a, int b) {
+    public VoidLeggings(ArmorMaterial Material, int a, int b)
+    {
         super(Material, a, b);
         setTextureName(TextureHandler.VoidLeggings);
         setNoRepair();
