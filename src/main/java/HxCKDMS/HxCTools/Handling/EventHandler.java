@@ -169,6 +169,34 @@ public class EventHandler {
                     }
                 }
             }
+        }if (item.toString().equalsIgnoreCase("voidspade")){
+            EntityPlayer player = event.entityPlayer;
+            int j = (int)player.posX;
+            int d = (int)player.posY;
+            int k = (int)player.posZ;
+            int xs = j-10;
+            int ys = d-10;
+            int zs = k-10;
+            int xm = j+10;
+            int ym = d+10;
+            int zm = k+10;
+            for(int x = xs; x < xm; x++)
+            {
+                for(int z = zs; z < zm; z++)
+                {
+                    World world = player.worldObj;
+                    for(int y = ys; y < ym; y++)
+                    {
+                        Block block = world.getBlock(x, y, z);
+                        if (block == Blocks.dirt || block == Blocks.sand || block == Blocks.gravel || block == Blocks.soul_sand && PickMode.equalsIgnoreCase("DeleteMode"))
+                        {
+                            ItemStack NewB = new ItemStack(player.worldObj.getBlock(x, y, z));
+                            world.spawnEntityInWorld(new EntityItem(world, player.posX, player.posY, player.posZ, NewB));
+                            world.setBlockToAir(x, y, z);
+                        }
+                    }
+                }
+            }
         }
     }
 }
