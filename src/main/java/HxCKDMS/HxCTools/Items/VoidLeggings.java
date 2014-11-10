@@ -17,6 +17,7 @@ public class VoidLeggings extends ItemArmor {
     public VoidLeggings(ArmorMaterial Material, int a, int b) {
         super(Material, a, b);
         setTextureName(TextureHandler.VoidLeggings);
+        setNoRepair();
     }
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor)

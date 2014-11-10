@@ -18,6 +18,7 @@ public class VoidChestplate extends ItemArmor {
     public VoidChestplate(ArmorMaterial Material, int a, int b) {
         super(Material, a, b);
         setTextureName(TextureHandler.VoidChestplate);
+        setNoRepair();
     }
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {

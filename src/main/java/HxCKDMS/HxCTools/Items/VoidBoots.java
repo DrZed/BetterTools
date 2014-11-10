@@ -16,6 +16,7 @@ public class VoidBoots extends ItemArmor {
     public VoidBoots(ArmorMaterial Material, int a, int b) {
         super(Material, a, b);
         setTextureName(TextureHandler.VoidBoots);
+        setNoRepair();
     }
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {

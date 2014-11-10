@@ -16,6 +16,7 @@ public class VoidHelm extends ItemArmor {
     public VoidHelm(ArmorMaterial Material, int a, int b) {
         super(Material, a, b);
         setTextureName(TextureHandler.VoidHelm);
+        setNoRepair();
     }
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
