@@ -12,7 +12,8 @@ import net.minecraft.world.World;
 import java.util.UUID;
 import java.util.jar.Attributes;
 
-public class VoidLeggings extends ItemArmor {
+public class VoidLeggings extends ItemArmor
+{
     public UUID SpeedUUID = UUID.fromString("13a8d246-c5d8-4af4-9b04-5f481fc93254");
     public VoidLeggings(ArmorMaterial Material, int a, int b)
     {

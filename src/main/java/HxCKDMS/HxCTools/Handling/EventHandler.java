@@ -49,21 +49,26 @@ public class EventHandler{
 
     @SubscribeEvent
     public void LivingUpdateEvent(LivingEvent.LivingUpdateEvent event){
-        if (VE || DevMode && event.entity instanceof EntityPlayer){
+        if (VE || DevMode && event.entity instanceof EntityPlayer)
+        {
             EntityPlayer player = (EntityPlayer) event.entity;
-            for(int k = 0; k < 4; k++){
+            for(int k = 0; k < 4; k++)
+            {
                 ItemStack Armor = player.getCurrentArmor(k);
                 if (Armor == VChest || Armor == VBoot || Armor == VLeg || Armor == VHelm){VoidArmor = Armor;}
-                if (VoidArmor != null){
+                if (VoidArmor != null)
+                {
                     VoidRepair--;
                     VoidArmor.setItemDamage(0);
                     VoidRepair = Config.VoidRepairRate;
                 }
             }
-            for(int j = 0; j < 9; j++){
+            for(int j = 0; j < 9; j++)
+            {
                 ItemStack Item = player.inventory.getStackInSlot(j);
                 if (Item == VB || Item == VS || Item == VH || Item == VA || Item == VP){VoidItem = Item;}
-                if (VoidItem != null){
+                if (VoidItem != null)
+                {
                     VoidRepair--;
                     if (VoidRepair == 0)
                     {
@@ -102,13 +107,11 @@ public class EventHandler{
         }
     }
     @SubscribeEvent
-    public void PlayerEvent(PlayerEvent event){
-
-    }
-    @SubscribeEvent
-    public void UserItemEvent(PlayerUseItemEvent event){
+    public void UserItemEvent(PlayerUseItemEvent event)
+    {
         Item item = event.item.getItem();
-        if (item.toString().equalsIgnoreCase("voidaxe")){
+        if (item.toString().equalsIgnoreCase("voidaxe"))
+        {
             EntityPlayer player = event.entityPlayer;
             int j = (int)player.posX;
             int d = (int)player.posY;
@@ -138,7 +141,8 @@ public class EventHandler{
                     }
                 }
             }
-        }if (item.toString().equalsIgnoreCase("voidpickaxe")){
+        }if (item.toString().equalsIgnoreCase("voidpickaxe"))
+        {
             EntityPlayer player = event.entityPlayer;
             int j = (int)player.posX;
             int d = (int)player.posY;
@@ -177,7 +181,9 @@ public class EventHandler{
                     }
                 }
             }
-        }if (item.toString().equalsIgnoreCase("voidspade")){
+        }
+        if (item.toString().equalsIgnoreCase("voidspade"))
+        {
             EntityPlayer player = event.entityPlayer;
             int j = (int)player.posX;
             int d = (int)player.posY;
@@ -205,7 +211,9 @@ public class EventHandler{
                     }
                 }
             }
-        }if (item.toString().equalsIgnoreCase("voidsword")){
+        }
+        if (item.toString().equalsIgnoreCase("voidsword"))
+        {
             EntityPlayer player = event.entityPlayer;
             int j = (int)player.posX;
             int d = (int)player.posY;

@@ -11,7 +11,8 @@ import net.minecraft.world.World;
 
 import java.util.UUID;
 
-public class VoidHelm extends ItemArmor {
+public class VoidHelm extends ItemArmor
+{
     public UUID FollowUUID = UUID.fromString("e3ba58fd-5842-4dcf-95ab-afd11e8d72a4");
     public VoidHelm(ArmorMaterial Material, int a, int b)
     {

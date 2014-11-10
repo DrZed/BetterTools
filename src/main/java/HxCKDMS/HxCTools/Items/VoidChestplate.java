@@ -13,7 +13,8 @@ import net.minecraft.world.World;
 
 import java.util.UUID;
 
-public class VoidChestplate extends ItemArmor {
+public class VoidChestplate extends ItemArmor
+{
     public UUID HealthUUID = UUID.fromString("d7aa109c-cbba-4587-b684-9b70c396bbb0");
     public VoidChestplate(ArmorMaterial Material, int a, int b)
     {
