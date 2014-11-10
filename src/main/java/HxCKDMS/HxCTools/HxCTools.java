@@ -1,6 +1,5 @@
 package HxCKDMS.HxCTools;
 
-import HxCKDMS.HxCTools.Creative.HxCToolsTab;
 import HxCKDMS.HxCTools.Handling.ContentRegistry;
 import HxCKDMS.HxCTools.Handling.CraftingRecipes;
 import HxCKDMS.HxCTools.Handling.TextureHandler;
@@ -11,17 +10,16 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.config.Configuration;
 
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 
-public class BetterTools
+public class HxCTools
 {
     @Instance(Reference.MOD_ID)
 
-    public static BetterTools instance;
+    public static HxCTools instance;
     
     public static Config Config;
 
@@ -29,14 +27,14 @@ public class BetterTools
     public void preinit(FMLPreInitializationEvent event)
     {
         Config = new Config(new Configuration(event.getSuggestedConfigurationFile()));
+        ContentRegistry.ContentRegistry();
     }
 
     @SubscribeEvent
     public void init(FMLInitializationEvent event)
     {
-        event.getModState();
-    	ContentRegistry.LanguageRegistry();
     	CraftingRecipes.createRecipes();
+        event.getModState();
 	}
 
     @SubscribeEvent

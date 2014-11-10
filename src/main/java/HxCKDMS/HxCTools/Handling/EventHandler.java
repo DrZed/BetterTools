@@ -5,11 +5,15 @@ import HxCKDMS.HxCTools.Items.VoidPickaxe;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -20,8 +24,9 @@ import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
+import java.util.Queue;
 
-public class EventHandler {
+public class EventHandler{
     public int VoidRepair = Config.VoidRepairRate;
 
     boolean DevMode = true;
@@ -196,6 +201,26 @@ public class EventHandler {
                         }
                     }
                 }
+            }
+        }if (item.toString().equalsIgnoreCase("voidsword")){
+            EntityPlayer player = event.entityPlayer;
+            int j = (int)player.posX;
+            int d = (int)player.posY;
+            int k = (int)player.posZ;
+            int xs = j-10;
+            int ys = d-10;
+            int zs = k-10;
+            int xm = j+10;
+            int ym = d+10;
+            int zm = k+10;
+            World world = player.worldObj;
+            Queue<EntityLivingBase> ents = (Queue<EntityLivingBase>)world.getEntitiesWithinAABB(EntityLiving.class, AxisAlignedBB.getBoundingBox(xs, ys, zs, xm, ym, zm));
+            if (ents != null && ents instanceof EntityLivingBase)
+            {
+                EntityLivingBase victim = ents.poll();
+                victim.setLastAttacker(player);
+                victim.attackEntityFrom(new DamageSource("YourMother"), 160F);
+                victim.onDeath(new DamageSource("YourMother"));
             }
         }
     }

@@ -70,7 +70,7 @@ public class ContentRegistry {
 
     public static Item Hammer;
 		
-	public static void LanguageRegistry()
+	public static void ContentRegistry()
 	{
 
     //  EnumHelper.addToolMaterial("name", harvestLevel, maxUses, efficiency, damage, enchantability)
