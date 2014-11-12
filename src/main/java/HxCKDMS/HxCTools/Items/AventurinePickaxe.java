@@ -12,6 +12,6 @@ public class AventurinePickaxe extends ItemPickaxe
 		super(material);
         setCreativeTab(HxCToolsTab.HxCToolsTab);
 		setUnlocalizedName("AventurinePickaxe");
-        setTextureName(TextureHandler.VoidPickaxe);
+        setTextureName(TextureHandler.AventurinePickaxe);
 	}
 }

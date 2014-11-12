@@ -5,12 +5,14 @@ import HxCKDMS.HxCTools.Handling.ContentRegistry;
 import HxCKDMS.HxCTools.Handling.CraftingRecipes;
 import HxCKDMS.HxCTools.Handling.TextureHandler;
 import HxCKDMS.HxCTools.lib.Reference;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
 import net.minecraftforge.common.config.Configuration;
 
 import java.util.logging.Level;
